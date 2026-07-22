@@ -10,7 +10,8 @@ ask the user for anything missing rather than assuming it.
 ## 1. Capture the site
 
 - Customer segment: residential, commercial, school, or agricultural
-- Country and region (this drives irradiance and, per CLAUDE.md, tax treatment)
+- Region (this drives irradiance). New Zealand only for now — if the customer is
+  Australian, stop here and say Australia is not yet supported
 - Roof type, pitch, orientation, and available area — or ground-mount area
 - Annual consumption in kWh, and the daytime share of it if known
 - Phase (single or three) and existing switchboard capacity
@@ -50,6 +51,5 @@ The output must include:
 - Estimated annual generation and a simple payback figure, with assumptions stated
 - Validity period for the pricing
 
-Before you finish, re-read CLAUDE.md and confirm both quoting rules are met. If
-the customer is Australian, stop and raise the unresolved 10% GST / AUD question
-instead of producing a quote.
+Before you finish, re-read CLAUDE.md and confirm both quoting rules are met and
+that the customer's market is marked live in the Markets table.

@@ -1,7 +1,12 @@
 # EcoAI Solar Quote
 
-Pre-installation price assessment system for solar PV systems in New Zealand and
-Australia. Customer segments: residential, commercial, schools, and agricultural.
+Pre-installation price assessment system for solar PV systems. Customer segments:
+residential, commercial, schools, and agricultural.
+
+**Current scope: New Zealand only.** Australia is a planned second market — see
+Markets below. Write new code so the tax rate and currency come from the market
+configuration, never hard-coded, so that adding Australia is a config change
+rather than a rewrite.
 
 ## Quoting rules
 
@@ -16,12 +21,20 @@ satisfy both.
    quote date is the date the pricing was generated. A quote without both is
    invalid and must not be sent to a customer.
 
-## Open question: Australian tax and currency
+Rule 1 states the New Zealand values, which are the only ones live today. It is a
+market setting, not a universal constant — when Australia goes live, rule 1 reads
+from the customer's market instead.
 
-Rule 1 encodes New Zealand settings. Australia uses **10% GST and AUD**, so the
-same rule cannot be applied to Australian customers as written. Until this is
-decided, treat any Australian quote as blocked and raise it rather than guessing
-a rate or converting currency silently.
+## Markets
+
+| Market | GST | Currency | Status |
+| --- | --- | --- | --- |
+| New Zealand | 15% | NZD | Live |
+| Australia | 10% | AUD | Planned — not yet supported |
+
+Do not produce an Australian quote until that row is marked live. Converting NZD
+pricing to AUD, or applying 15% to an Australian customer, is wrong in both
+directions — decline and flag it instead.
 
 ## Customer segments
 
